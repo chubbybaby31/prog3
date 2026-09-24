@@ -1,0 +1,9 @@
+Test_Creature
+hop
+left
+hop
+go 1
+
+COMMENTS
+
+Test what happens with multiple double-new-line characters in the file
