@@ -15,6 +15,7 @@ import assignment.Critter.HungerLevel;
  */
 public class Interpreter implements CritterInterpreter {
 
+	// parses the +n or -n arguments to determine the exact code line
 	private int jumpCalculator(String argument, int line, Critter c) {
 		if (argument.charAt(0) == '+') {
 			line += Integer.parseInt(argument.substring(1));
@@ -32,6 +33,8 @@ public class Interpreter implements CritterInterpreter {
 		return line;
 	}
 
+	// verifies all args can be parsed into ints
+	// verifies correct amount of args passed to function
 	private int[] parseArgs(int numberOfArgs, String[] args) {
 		String command = args[0];
 		if (args.length - 1 != numberOfArgs) {
@@ -49,6 +52,7 @@ public class Interpreter implements CritterInterpreter {
 		return numericalArgs;
 	}
 
+	// calls jumpCalculator to parse +-n args
 	private int[] parseArgs(int numberOfArgs, String[] args, int line, int jumpIndex, Critter c) {
 		String command = args[0];
 		if (args.length - 1 != numberOfArgs) {
@@ -83,6 +87,9 @@ public class Interpreter implements CritterInterpreter {
 			}
 			args = code.get(line).split(" ");
 			function = args[0];
+			// each case is a unique function the critter can perform
+			// returns are used for commands that should end a turn
+			// breaks are used for commands that don't end a turn
 			switch(function) {
 				case "hop":
 					c.hop();
@@ -266,7 +273,7 @@ public class Interpreter implements CritterInterpreter {
 			character = reader.read();
 		}
 		reader.close();
-
+		// splits the text by lines and removes the comments by splitting by double-new-line character
 		String[] lines = input.toString().split("\n\n")[0].split("\n");
 		ArrayList<String> commands = new ArrayList<String>();
 		String name = "";

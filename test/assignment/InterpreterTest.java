@@ -25,6 +25,7 @@ class FakeCritter implements Critter {
     private int[] cellContents = new int[8];
     private int[] offAngles = new int[8];
 
+    // keeps track of which function has been called for the fake critter
     public boolean hopped = false;
     public boolean turnedLeft = false;
     public boolean turnedRight = false;
