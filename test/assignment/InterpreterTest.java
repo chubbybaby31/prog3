@@ -510,6 +510,27 @@ public class InterpreterTest {
 		assertFalse(c.hopped);
 	}
 
+    @Test
+    void testJumpCalculator() {
+        String argPlus = "+1";
+        String argMinus = "-1";
+        String argAbs = "1";
+        int line = 2;
+
+        ArrayList<String> commands = new ArrayList<>();
+        commands.add("test");
+        commands.add("test");
+        commands.add("test");
+        commands.add("test");
+
+        FakeCritter test = new FakeCritter("test", commands);
+
+        assertEquals(3, interpreter.jumpCalculator(argPlus, line, test));
+        assertEquals(1, interpreter.jumpCalculator(argMinus, line, test));
+        assertEquals(0, interpreter.jumpCalculator(argAbs, line, test)); // not 1 because of 0 base indexing
+
+    }
+
     // You can test execute critter here. You may want to make additional tests and
     // your own testing harness. See spec section 2.5 for more details.
     @Test

@@ -16,7 +16,7 @@ import assignment.Critter.HungerLevel;
 public class Interpreter implements CritterInterpreter {
 
 	// parses the +n or -n arguments to determine the exact code line
-	private int jumpCalculator(String argument, int line, Critter c) {
+	public int jumpCalculator(String argument, int line, Critter c) {
 		if (argument.charAt(0) == '+') {
 			line += Integer.parseInt(argument.substring(1));
 		} else if (argument.charAt(0) == '-') {
